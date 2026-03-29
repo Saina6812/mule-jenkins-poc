@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="9bc5d9e6-8e4a-4885-ac1a-d4469f5d37d3" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="mule-jenkins-pocFlow" doc:id="bfc63fa0-ab34-4cde-960f-dd740b6b5ef9" >
+		<http:listener doc:name="Listener" doc:id="6a9504a5-2ab6-401e-b462-2de2f2289583" config-ref="HTTP_Listener_config" path="/hello" allowedMethods="GET"/>
+		<logger level="INFO" doc:name="Logger" doc:id="6ef50edd-f8e3-44de-8d66-3c9a2cca7064" />
+		<set-payload value='#["Hello from Jenkins CI/CD"]' doc:name="Set Payload" doc:id="bb5275bb-9682-4470-a771-adb69a3fea47" />
+		<logger level="INFO" doc:name="Logger" doc:id="bfd691d0-0367-4ee2-8305-d3bc66d2ed83" message="#[payload]"/>
+	</flow>
+</mule>
