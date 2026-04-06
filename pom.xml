@@ -6,32 +6,38 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    
+    <!-- Your Business Group ID -->
     <groupId>c23f822c-7e83-4d5d-94be-5b8c504a7af1</groupId>
-    <artifactId>mule-jenkins-poc</artifactId>
-    <version>1.0.10</version>
+
+    <!-- Keep a UNIQUE artifactId -->
+    <artifactId>mule-jenkins-poc-saina</artifactId>
+
+    <!-- SNAPSHOT is fine now -->
+    <version>1.0.0-SNAPSHOT</version>
+
     <packaging>mule-application</packaging>
 
-    <name>mule-jenkins-poc</name>
+    <name>mule-jenkins-poc-saina</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
         <app.runtime>4.7.2</app.runtime>
         <mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
-        
     </properties>
 
     <build>
         <plugins>
 
-            
+            <!-- Clean Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>3.2.0</version>
             </plugin>
 
-            
+            <!-- Mule Maven Plugin (ONLY REQUIRED PLUGIN) -->
             <plugin>
                 <groupId>org.mule.tools.maven</groupId>
                 <artifactId>mule-maven-plugin</artifactId>
@@ -44,21 +50,19 @@
                         <uri>https://anypoint.mulesoft.com</uri>
                         <provider>MC</provider>
 
-                        
                         <environment>Sandbox</environment>
                         <target>Cloudhub-US-East-2</target>
 
-                        
+                        <!-- Runtime -->
                         <muleVersion>4.11.2:3e-java17</muleVersion>
 
-                        
+                        <!-- Credentials from Jenkins -->
                         <username>${anypoint.username}</username>
                         <password>${anypoint.password}</password>
 
-                        
-                        <applicationName>mule-jenkins-poc-saina-v2</applicationName>
+                        <!-- UNIQUE app name -->
+                        <applicationName>mule-jenkins-poc-saina</applicationName>
 
-                        
                         <businessGroupId>c23f822c-7e83-4d5d-94be-5b8c504a7af1</businessGroupId>
 
                         <replicas>1</replicas>
@@ -72,33 +76,19 @@
                 </configuration>
             </plugin>
 
-			<plugin>
-			    <groupId>org.mule.tools.maven</groupId>
-			    <artifactId>exchange-mule-maven-plugin</artifactId>
-			    <version>0.0.23</version>
-			
-			    <executions>
-			        <execution>
-			            <id>exchange-pre-deploy</id>
-			            <phase>validate</phase>
-			            <goals>
-			                <goal>exchange-pre-deploy</goal>
-			            </goals>
-			        </execution>
-			    </executions>
-			</plugin>
-
         </plugins>
     </build>
 
-    
+    <!-- REQUIRED for Exchange publishing -->
     <distributionManagement>
         <repository>
-        	<id>anypoint-exchange-v3</id>
-        	<name>Anypoint Exchange</name>
-        	<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/c23f822c-7e83-4d5d-94be-5b8c504a7af1/maven</url>
-        	<layout>default</layout>
-    </repository>
+            <id>anypoint-exchange-v3</id>
+            <name>Anypoint Exchange</name>
+            <url>
+                https://maven.anypoint.mulesoft.com/api/v3/organizations/c23f822c-7e83-4d5d-94be-5b8c504a7af1/maven
+            </url>
+            <layout>default</layout>
+        </repository>
     </distributionManagement>
 
     <dependencies>
@@ -113,11 +103,13 @@
     <repositories>
         <repository>
             <id>anypoint-exchange-v3</id>
+            <name>Anypoint Exchange</name>
             <url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
         </repository>
 
         <repository>
             <id>mulesoft-releases</id>
+            <name>MuleSoft Releases Repository</name>
             <url>https://repository.mulesoft.org/releases/</url>
         </repository>
     </repositories>
@@ -125,7 +117,11 @@
     <pluginRepositories>
         <pluginRepository>
             <id>mulesoft-releases</id>
+            <name>MuleSoft Releases Repository</name>
             <url>https://repository.mulesoft.org/releases/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </pluginRepository>
     </pluginRepositories>
 
