@@ -9,7 +9,7 @@
     
     <groupId>c23f822c-7e83-4d5d-94be-5b8c504a7af1</groupId>
     <artifactId>mule-jenkins-poc</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.${maven.build.timestamp}</version>
     <packaging>mule-application</packaging>
 
     <name>mule-jenkins-poc</name>
@@ -18,6 +18,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <app.runtime>4.7.2</app.runtime>
         <mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     </properties>
 
     <build>
