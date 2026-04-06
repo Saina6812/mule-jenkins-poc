@@ -9,7 +9,7 @@
     
     <groupId>c23f822c-7e83-4d5d-94be-5b8c504a7af1</groupId>
     <artifactId>mule-jenkins-poc</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.10</version>
     <packaging>mule-application</packaging>
 
     <name>mule-jenkins-poc</name>
