@@ -9,7 +9,7 @@
     
     <groupId>c23f822c-7e83-4d5d-94be-5b8c504a7af1</groupId>
     <artifactId>mule-jenkins-poc</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packaging>mule-application</packaging>
 
     <name>mule-jenkins-poc</name>
@@ -73,22 +73,19 @@
             </plugin>
 
 			<plugin>
-    			<groupId>org.mule.tools.maven</groupId>
-    			<artifactId>exchange-mule-maven-plugin</artifactId>
-    			<version>0.0.23</version>
-    			<configuration>
-        			<skipDocumentation>true</skipDocumentation>
-    			</configuration>
-    			<executions>
-        			<execution>
-            		<id>exchange-deploy</id>
-            		<phase>deploy</phase>
-            		<goals>
-                		<goal>exchange-pre-deploy</goal>
-                		<goal>exchange-deploy</goal>
-            		</goals>
-        			</execution>
-    			</executions>
+			    <groupId>org.mule.tools.maven</groupId>
+			    <artifactId>exchange-mule-maven-plugin</artifactId>
+			    <version>0.0.23</version>
+			
+			    <executions>
+			        <execution>
+			            <id>exchange-pre-deploy</id>
+			            <phase>validate</phase>
+			            <goals>
+			                <goal>exchange-pre-deploy</goal>
+			            </goals>
+			        </execution>
+			    </executions>
 			</plugin>
 
         </plugins>
